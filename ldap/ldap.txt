@@ -1,5 +1,7 @@
-edit lksjogja20.lan in ou.ldif
+edit file ldap.conf
+
+edit lksjogja20.lan in ou.ldif and ou name
 ldapadd -x -D "cn=admin,dc=lksjogja20,dc=lan" -w "Skill20" -f ou.ldif
 
-edit lksjogja20.lan in group.ldif
+edit lksjogja20.lan in group.ldif and ou name and group number
 ldapadd -x -D "cn=admin,dc=lksjogja1,dc=lan" -W -f group.ldif
