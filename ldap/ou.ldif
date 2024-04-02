@@ -1,0 +1,11 @@
+dn: ou=VPN,dc=lksjogja20,dc=lan
+objectClass: organizationalUnit
+ou: VPN
+
+dn: ou=Mail,dc=lksjogja20,dc=lan
+objectClass: organizationalUnit
+ou: Mail
+
+dn: ou=Misc,dc=lksjogja20,dc=lan
+objectClass: organizationalUnit
+ou: Misc
