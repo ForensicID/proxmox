@@ -1,0 +1,14 @@
+dn: cn=vpn,ou=VPN,dc=lksjogja20,dc=lan
+objectClass: posixGroup
+cn: vpn
+gidNumber: 2000
+
+dn: cn=mail,ou=Mail,dc=lksjogja20,dc=lan
+objectClass: posixGroup
+cn: mail
+gidNumber: 3000
+
+dn: cn=misc,ou=Misc,dc=lksjogja20,dc=lan
+objectClass: posixGroup
+cn: misc
+gidNumber: 4000
