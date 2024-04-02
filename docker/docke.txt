@@ -1,0 +1,3 @@
+apt install docker docker.io docker-compose -y
+docker pull ranforensic/wordpress_postgresql:wp_pgsql_docker
+docker-compose -f docker-compose.yml up -d
