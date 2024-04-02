@@ -1,0 +1,16 @@
+version: "3.3"
+
+services:
+
+  wordpress:
+    image: ranforensic/wordpress_postgresql:wp_pgsql_docker
+    container_name: wordpress
+    restart: always
+    ports:
+      - "81:80"
+      - "444:443"
+    volumes:
+      - wordpress:/var/www/html
+
+volumes:
+  wordpress:
