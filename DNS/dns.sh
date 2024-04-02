@@ -11,10 +11,11 @@
 
 
 # Global Variable
-dir=hilmy # Directory on Bind File
-name=hilmy # Name of your domain without TLD
-domain=hilmy.com # Domain aja
-ip=192.168.2.1 # IP of Main Domain
+dir=lks # Directory on Bind File
+name1=forward # Name of your domain without TLD
+name2=reverse # Name of your domain without TLD
+domain=lksjogja20.lan # Domain aja
+ip=172.63.20.3 # IP of Main Domain
 
 pkg="bind dnsutils"
 pkg_true=$(dpkg-query -W --showformat='${Status}\n' $pkg | grep "install ok installed")
@@ -25,18 +26,8 @@ if [ "" = "$pkg_true" ]; then
 fi
 
 
-# Creating a Directory for Forward n Reverse DNS File
-if mkdir /etc/bind/$dir; then
-  echo "$dir Created in Bind9 Directory.."
-  sleep 0.5
-else
-  echo "$dir is Created or I dont know.."
-  sleep 0.5
-fi
-
-
 # Copy Forward Zone File
-if cp -R /etc/bind/db.local /etc/bind/$dir/db.$name; then
+if cp -R /etc/bind/db.local /etc/bind/lks.$name1; then
   echo "DB Local has been copied.."
   sleep 0.5
 else
@@ -44,9 +35,17 @@ else
   sleep 0.5
 fi
 
+# Copy Reverse Zone File
+if cp -R /etc/bind/db.127 /etc/bind/lks.$name2; then
+  echo "DB Rev has been copied.."
+  sleep 0.5
+else
+  echo "File exist or i dont know"
+  sleep 0.5
+fi
 
 # Copy Reverse Zone File
-if cp -R /etc/bind/db.127 /etc/bind/$dir/$name.rev; then
+if cp -R /etc/bind/db.127 /etc/bind/lks.$name2.172; then
   echo "DB Rev has been copied.."
   sleep 0.5
 else
@@ -56,28 +55,44 @@ fi
 
 
 # Change Localhost to Domain
-if sed -i s/localhost/$domain/g /etc/bind/$dir/db.$name; then
+if sed -i s/localhost/$domain/g /etc/bind/lks.$name1; then
   echo "Forward File Localhost Changed to $domain .."
   sleep 0.5
 else
-  echo "Error, Check your db.$name"
+  echo "Error, Check your db.$name1"
   sleep 0.5
 fi
 
-if sed -i s/localhost/$domain/g /etc/bind/$dir/$name.rev; then
+if sed -i s/localhost/$domain/g /etc/bind/lks.$name2; then
   echo "Reverse File Localhost Changed to $domain .."
   sleep 0.5
 else
-  echo "Error, Check your $name.rev"
+  echo "Error, Check your lks.$name2"
+  sleep 0.5
+fi
+
+if sed -i s/localhost/$domain/g /etc/bind/lks.$name2.172; then
+  echo "Reverse File Localhost Changed to $domain .."
+  sleep 0.5
+else  echo "Error, Check your lks.$name2.172"
   sleep 0.5
 fi
 
 
 # Change Forward Zone IP Address
-if sed -i s/127.0.0.1/$ip/g /etc/bind/$dir/db.$name; then
+if sed -i s/127.0.0.1/$ip/g /etc/bind/lks.$name1; then
   echo "Localhost Changed to $domain .."
   sleep 0.5
 else
   echo "Error, Check your db.$name"
+  sleep 0.5
+fi
+
+# Copy named.conf.local
+if mv /proxmox/DNS/named.conf.local /etc/bind/named.conf.local; then
+  echo "named.conf.local has been moved.."
+  sleep 0.5
+else
+  echo "File exist or i dont know"
   sleep 0.5
 fi
