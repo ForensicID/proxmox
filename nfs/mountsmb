@@ -1,0 +1,4 @@
+apt install cifs-utils -y
+mkdir /mnt/smbmount
+mount -t cifs -o username=gladiator20 //192.168.20.2/private /mnt/smbmount
+df -h
