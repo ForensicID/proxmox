@@ -1,0 +1,5 @@
+edit lksjogja20.lan in ou.ldif
+ldapadd -x -D "cn=admin,dc=lksjogja20,dc=lan" -w "Skill20" -f ou.ldif
+
+edit lksjogja20.lan in group.ldif
+ldapadd -x -D "cn=admin,dc=lksjogja1,dc=lan" -W -f group.ldif
