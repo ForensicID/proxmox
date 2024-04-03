@@ -9,3 +9,5 @@ ou: Mail
 dn: ou=Misc,dc=lksjogja20,dc=lan
 objectClass: organizationalUnit
 ou: Misc
+
+ldapadd -x -D cn=admin,dc=example,dc=com -W -f ou.ldif
