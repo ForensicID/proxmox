@@ -12,3 +12,5 @@ dn: cn=misc,ou=Misc,dc=lksjogja20,dc=lan
 objectClass: posixGroup
 cn: misc
 gidNumber: 4000
+
+ldapadd -x -D cn=admin,dc=lksjogja20,dc=lan -W -f group.ldif
