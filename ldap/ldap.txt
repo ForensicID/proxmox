@@ -1,10 +1,8 @@
 edit file ldap.conf
 
 edit lksjogja20.lan in ou.ldif and ou name
-ldapadd -x -D "cn=admin,dc=lksjogja20,dc=lan" -w "Skill20" -f ou.ldif
 
 edit lksjogja20.lan in group.ldif
-ldapadd -x -D "cn=admin,dc=lksjogja1,dc=lan" -W -f group.ldif
 
 nano /etc/ldapscripts/ldapscripts.conf
 SUFFIX="dc=lksjogja1,dc=lan"
@@ -16,3 +14,5 @@ jangan lupa ldapscript password
 edit user.sh dengan ou, gruop, dan password
 
 kasih permission dan jalankan
+
+ldapadd -x -D cn=admin,dc=example,dc=com -W -f basedn.ldif
