@@ -1,0 +1,11 @@
+apt update && apt upgrade -y wget curl ftp ssh telnet traceroute net-tools tree smbclient dnsutils ldap-utils lynx nfs-common rsync resolvconf
+
+apt-get install openvswitch-switch
+
+update repository proxmox
+Proxmox VE No-Subscription Repository
+/etc/apt/sources.list
+deb http://download.proxmox.com/debian/pve bookworm pve-no-subscription
+/etc/apt/sources.list.d/ceph.list
+deb http://download.proxmox.com/debian/ceph-reef bookworm no-subscription
+disable /etc/apt/sources.list.d/enterprise
