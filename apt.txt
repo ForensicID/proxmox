@@ -1,4 +1,4 @@
-apt update && apt upgrade -y wget curl ftp ssh telnet traceroute net-tools tree smbclient dnsutils ldap-utils lynx nfs-common rsync resolvconf
+apt update && apt upgrade -y wget curl ftp ssh telnet traceroute net-tools tree smbclient dnsutils ldap-utils lynx nfs-common rsync resolvconf openvswitch-switch
 
 apt-get install openvswitch-switch
 
