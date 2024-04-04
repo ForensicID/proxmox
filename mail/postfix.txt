@@ -1,0 +1,3 @@
+apt install postfix dovecot-imapd dovecot-pop3d -y
+nano /etc/postfix/main.cf
+home_mailbox = Maildir/
