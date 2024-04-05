@@ -40,3 +40,5 @@ icingacli setup token create
 icingacli setup token show
 
 http://[domain-name-or-ip-address]/icingaweb2/setup
+icinga2 feature enable command
+systemctl restart icinga2.service
