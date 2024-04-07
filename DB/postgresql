@@ -1,3 +1,0 @@
-apt install postgresql postgresql-contrib -y
-nano /etc/postgresql/14/main/postgresql.conf
-listen_addresses = '*'
