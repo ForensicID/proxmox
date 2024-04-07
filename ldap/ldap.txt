@@ -1,15 +1,10 @@
 edit file ldap.conf
 
 edit lksjogja20.lan in ou.ldif and ou name
+ldapadd -x -D cn=admin,dc=example,dc=com -W -f basedn.ldif
 
 edit lksjogja20.lan in group.ldif
-
-nano /etc/ldapscripts/ldapscripts.conf
-SUFFIX="dc=lksjogja1,dc=lan"
-USUFFIX="ou=VPN"
-BINDDN="cn=admin,dc=lksjogja1,dc=lan"
-
-jangan lupa ldapscript password
+ldapadd -x -D cn=admin,dc=example,dc=com -W -f basedn.ldif
 
 edit user.sh user nya dan jangan lupa group nya
 
