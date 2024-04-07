@@ -1,0 +1,1 @@
+apt install icinga2 monitoring-plugins -y
