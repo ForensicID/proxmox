@@ -6,17 +6,12 @@
 // organization
 //include "/etc/bind/zones.rfc1918";
 
-zone "lksjogja20.lan" {
+zone "lksjogja25.lan" {
         type master;
         file "/etc/bind/lks.forward";
 };
 
-zone "20.168.192.in-addr.arpa" {
-        type master;
-        file "/etc/bind/lks.reverse";
-};
-
 zone "172.in-addr.arpa" {
         type master;
-        file "/etc/bind/lks.reverse.172";
+        file "/etc/bind/lks.reverse";
 };
