@@ -1,24 +1,18 @@
 #!/bin/bash
 
-pkg = ["bind9", "dnsutils"]
-file1 = named.conf.local
-file2 = lks.forward
-file3 = lks.reverse
-file4 = named.conf.options
-
 echo Installing/Checking packages from list
-apt install -y "${pkg[@]}"
+apt install -y bind9 dnsutils
 sleep 10
 
-if cp /etc/bind/$file1 /etc/bind/$file1.bak; then
-  echo "Backup file $file1 .."
+if cp /etc/bind/named.conf.local /etc/bind/named.conf.local.bak; then
+  echo "Backup file named.conf.local .."
   sleep 0.5
 else
-  echo "Cant backup $file1 .."
+  echo "Cant backup named.conf.local .."
   sleep 0.5
 fi
 
-if rm -rf /etc/bind/$file1; then
+if rm -rf /etc/bind/named.conf.local; then
   echo "Remove named.conf.local.."
   sleep 0.5
 else
@@ -26,57 +20,53 @@ else
   sleep 0.5
 fi
 
-if cp -R $file1 /etc/bind/; then
-  echo "$file1 has been copied.."
+if cp -R named.conf.local /etc/bind/; then
+  echo "named.conf.local has been copied.."
   sleep 0.5
 else
-  echo "Cant copied $file1"
+  echo "Cant copied named.conf.local"
   sleep 0.5
 fi
 
-if cp -R $file2 /etc/bind/; then
-  echo "$file2 has been copied.."
+if cp -R lks.forward /etc/bind/; then
+  echo "lks.forward has been copied.."
   sleep 0.5
 else
-  echo "Cant copied $file2 .."
+  echo "Cant copied lks.forward .."
   sleep 0.5
 fi
 
-if cp -R $file3 /etc/bind/; then
-  echo "$file3 has been copied.."
+if cp -R lks.reverse /etc/bind/; then
+  echo "lks.reverse has been copied.."
   sleep 0.5
 else
-  echo "Cant copied $file3 .."
+  echo "Cant copied lks.reverse .."
   sleep 0.5
 fi
 
-if cp /etc/bind/$file4 /etc/bind/$file4.bak; then
-  echo "Backup file $file4 .."
+if cp /etc/bind/named.conf.options /etc/bind/named.conf.options.bak; then
+  echo "Backup file named.conf.options .."
   sleep 0.5
 else
-  echo "Cant backup $file4 .."
+  echo "Cant backup named.conf.options .."
   sleep 0.5
 fi
 
-if rm -rf /etc/bind/$file4; then
-  echo "Remove $file4 .."
+if rm -rf /etc/bind/named.conf.options; then
+  echo "Remove named.conf.options .."
   sleep 0.5
 else
   echo "Cant remove.."
   sleep 0.5
 fi
 
-if cp -R $file4 /etc/bind/; then
-  echo "$file4 has been copied.."
+if cp -R named.conf.options /etc/bind/; then
+  echo "named.conf.options has been copied.."
   sleep 0.5
 else
-  echo "Cant copied $file4 .."
+  echo "Cant copied named.conf.options .."
   sleep 0.5
 fi
-
-echo Restarting bind .....
-sudo systemctl restart bind9.service
-sleep 3
 
 echo Restarting named .....
 sudo service named restart
