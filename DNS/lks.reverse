@@ -2,18 +2,18 @@
 ; BIND reverse data file for local loopback interface
 ;
 $TTL    604800
-@       IN      SOA     lksjogja20.lan. root.lksjogja20.lan. (
+@       IN      SOA     lksjogja25.lan. root.lksjogja25.lan. (
                               1         ; Serial
                          604800         ; Refresh
                           86400         ; Retry
-                        2419200         ; Expire
+                        2419250         ; Expire
                          604800 )       ; Negative Cache TTL
 ;
-@       IN      NS      lksjogja20.lan.
-lksjogja20.lan. IN      A       172.16.20.4
-16.20.4         IN      PTR     lksjogja20.lan.
-19.20.4         IN      PTR     www.lksjogja20.lan.
-17.20.2         IN      PTR     data.lksjogja20.lan.
-19.20.2         IN      PTR     mail.lksjogja20.lan.
-19.20.3         IN      PTR     ldap.lksjogja20.lan.
-16.20.5         IN      PTR     monitor.lksjogja20.lan.
+@       IN      NS      lksjogja25.lan.
+lksjogja25.lan. IN      A       172.16.25.4
+16.25.4         IN      PTR     lksjogja25.lan.
+19.25.4         IN      PTR     www.lksjogja25.lan.
+17.25.2         IN      PTR     data.lksjogja25.lan.
+19.25.2         IN      PTR     mail.lksjogja25.lan.
+19.25.3         IN      PTR     ldap.lksjogja25.lan.
+16.25.5         IN      PTR     monitor.lksjogja25.lan.
