@@ -13,6 +13,8 @@ sed -i "s/#PermitRootLogin prohibit-password/PermitRootLogin yes/g" /etc/ssh/ssh
 sed -i "s/#Banner none/Banner /etc/ssh/banner/g" /etc/ssh/sshd_config
 sleep 0.5
 
+echo Banner /etc/ssh/banner >> /etc/ssh/sshd_config
+
 if cp banner /etc/ssh/; then
   echo "Copying banner ssh .."
   sleep 0.5
