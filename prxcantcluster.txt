@@ -1,0 +1,6 @@
+go to winscp
+remote proxmox pve
+go to /etc/pve/nodes/pve1/qemu-server
+backup file vm
+cluster again
+go back file vm
