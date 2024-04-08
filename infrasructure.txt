@@ -1,0 +1,20 @@
+# MIKROTIK
+ip dhcp client
+ip firewall nat
+bridge port
+ip addresses bridge 172.16.X.1/28
+ip addresses port4 192.168.50.1/24
+
+# PROXMOX 2
+boot pve2 ip 172.16.X.3
+install iso
+
+# MIKROTIK
+wireless
+ip addresses 192.168.X.1/24
+ip dhcp server
+ip hotspot setup
+
+# PROXMOX 1
+boot pve1 ip 172.16.X.2
+install iso
