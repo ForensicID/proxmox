@@ -4,6 +4,14 @@ echo Installing/Checking packages from postgresql
 apt install -y postgresql postgresql-contrib
 sleep 5
 
+if cp /etc/postgresql/14/main/postgresql.conf /etc/postgresql/14/main/postgresql.conf.bak; then
+  echo "Backup file /etc/postgresql/14/main/postgresql.conf .."
+  sleep 0.5
+else
+  echo "Cant backup /etc/postgresql/14/main/postgresql.conf .."
+  sleep 0.5
+fi
+
 echo Change configuration from /etc/postgresql/14/main/postgresql.conf
 sed -i "s/#listen_addresses = 'localhost'/listen_addresses = '*'/g" /etc/postgresql/14/main/postgresql.conf
 sleep 2
