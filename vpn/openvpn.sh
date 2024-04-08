@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Global Variable
+domain="lksjogja25.lan"
+
 echo Installing/Checking packages from openvpn & easy-rsa
 apt install openvpn easy-rsa -y
 sleep 5
@@ -20,7 +23,26 @@ else
   sleep 0.5
 fi
 
-if cp -R named.conf.local /etc/bind/; then
+echo Installing/Checking packages from openvpn & easy-rsa
+sed -i "s/#set_var EASYRSA        "${0%/*}"/set_var EASYRSA "$PWD"/g" /etc/openvpn/easy-rsa/vars
+sed -i "s/#set_var EASYRSA_PKI            "$PWD/pki"/set_var EASYRSA_PKI             "$PWD/pki"/g" /etc/openvpn/easy-rsa/vars
+sed -i "s/#set_var EASYRSA_DN     "cn_only"/set_var EASYRSA_DN      "cn_only"/g" /etc/openvpn/easy-rsa/vars
+sed -i "s/#set_var EASYRSA_REQ_COUNTRY    "US"/set_var EASYRSA_REQ_COUNTRY     "ID"/g" /etc/openvpn/easy-rsa/vars
+sed -i "s/#set_var EASYRSA_REQ_PROVINCE   "California"/set_var EASYRSA_REQ_PROVINCE    "DIY"/g" /etc/openvpn/easy-rsa/vars
+sed -i "s/#set_var EASYRSA_REQ_CITY       "San Francisco"/set_var EASYRSA_REQ_CITY        "Kota Yogyakarta"/g" /etc/openvpn/easy-rsa/vars
+sed -i "s/#set_var EASYRSA_REQ_ORG        "Copyleft Certificate Co"/set_var EASYRSA_REQ_ORG         "SMKN 2 Yogyakarta"/g" /etc/openvpn/easy-rsa/vars
+sed -i "s/#set_var EASYRSA_REQ_EMAIL      "me@example.net"/set_var EASYRSA_REQ_EMAIL       "admin@mail.lksjogja25.lan"/g" /etc/openvpn/easy-rsa/vars
+sed -i "s/#set_var EASYRSA_REQ_OU         "My Organizational Unit"/set_var EASYRSA_REQ_OU          "vpn.lksjogja25.lan"/g" /etc/openvpn/easy-rsa/vars
+sed -i "s/ganti/ganti/g" /etc/openvpn/easy-rsa/vars
+sed -i "s/ganti/ganti/g" /etc/openvpn/easy-rsa/vars
+sed -i "s/ganti/ganti/g" /etc/openvpn/easy-rsa/vars
+sed -i "s/ganti/ganti/g" /etc/openvpn/easy-rsa/vars
+sed -i "s/ganti/ganti/g" /etc/openvpn/easy-rsa/vars
+sed -i "s/ganti/ganti/g" /etc/openvpn/easy-rsa/vars
+
+
+
+if sed -i "s/#set_var EASYRSA        "${0%/*}"/set_var EASYRSA "$PWD"/g" /etc/openvpn/easy-rsa/vars; then
   echo "named.conf.local has been copied.."
   sleep 0.5
 else
