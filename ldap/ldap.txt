@@ -1,3 +1,4 @@
+apt install slapd ldap-utils -y
 edit file ldap.conf
 
 edit lksjogja20.lan in ou.ldif and ou name
