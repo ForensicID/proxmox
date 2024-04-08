@@ -2,6 +2,8 @@ apt install slapd ldap-utils -y
 edit file ldap.conf
 BASE    dc=lksjogja25,dc=lan
 URI     ldap://ldap.lkgjogja25.lan ldap://ldap.lksjogja25.lan:666
+restart slapd
+dpkg-reconfigure slapd
 
 edit lksjogja20.lan in ou.ldif and ou name
 ldapadd -x -D cn=admin,dc=example,dc=com -W -f basedn.ldif
