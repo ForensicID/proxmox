@@ -13,6 +13,7 @@ if cp /etc/ssh/sshd_config /etc/ssh/sshd_config.bak; then
 else
   echo "Cant Copying banner ssh .."
   sleep 0.5
+fi
 
 echo Change configuration from /etc/ssh/sshd_config
 sed -i "s/#Port 22/Port $port/g" /etc/ssh/sshd_config
@@ -26,6 +27,7 @@ if cp banner /etc/ssh/; then
 else
   echo "Cant Copying banner ssh .."
   sleep 0.5
+fi
 
 echo Restarting ssh...
 systemctl restart ssh
