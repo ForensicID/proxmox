@@ -9,13 +9,14 @@ wget -O - https://packages.icinga.com/icinga.key | gpg --dearmor -o /usr/share/k
 echo "deb-src [signed-by=/usr/share/keyrings/icinga-archive-keyring.gpg] https://packages.icinga.com/ubuntu icinga-${DIST} main" >>  /etc/apt/sources.list.d/${DIST}-icinga.list
 
 apt update
-apt install icinga2 monitoring-plugins mariadb-server mariadb-client icinga2-ido-mysql -y
+apt install icinga2 monitoring-plugins icinga2-ido-pgsql -y
 
-mysql -u root -p
-CREATE DATABASE icinga2;
-GRANT SELECT, INSERT, UPDATE, DELETE, DROP, CREATE VIEW, INDEX, EXECUTE ON icinga.* TO 'icinga2'@'localhost' IDENTIFIED BY 'Skill20';
-FLUSH PRIVILEGES;
-quit
+sudo su postgres
+psql
+create database icinga2;
+create user icinga2 with password 'Skills39';
+grant all privileges on database icinga2 to icinga2;
+\q
 
 mysql -u root -p icinga2 < /usr/share/icinga2-ido-mysql/schema/mysql.sql
 nano /etc/icinga2/features-available/ido-mysql.conf
