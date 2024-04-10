@@ -18,10 +18,10 @@ create user icinga2 with password 'Skills39';
 grant all privileges on database icinga2 to icinga2;
 \q
 
-mysql -u root -p icinga2 < /usr/share/icinga2-ido-mysql/schema/mysql.sql
-nano /etc/icinga2/features-available/ido-mysql.conf
+psql -h 127.0.0.1 -U icinga2 -d icinga2 < /usr/share/icinga2-ido-pgsql/schema/pgsql.sql
+nano /etc/icinga2/features-available/ido-pgsql.conf
 
-icinga2 feature enable ido-mysql
+icinga2 feature enable ido-pgsql
 systemctl restart icinga2
 icinga2 api setup
 
@@ -33,12 +33,15 @@ object ApiUser "icingaweb2" {
 
 systemctl restart icinga2
 apt install icingaweb2 libapache2-mod-php icingacli -y
+nano /etc/php/7.4/apache2/php.ini
+date.timezone = Asia/Jakarta
 
-mysql -u root -p
-CREATE DATABASE icingaweb2;
-GRANT ALL ON icingaweb2.* TO icingaweb2@localhost IDENTIFIED BY 'Skill20';
-FLUSH PRIVILEGES;
-quit
+sudo su postgres
+psql
+create database icingaweb2;
+create user icingaweb2 with password 'Skills39';
+grant all privileges on database icingaweb2 to icingaweb2;
+\q
 
 icingacli setup token create
 icingacli setup token show
