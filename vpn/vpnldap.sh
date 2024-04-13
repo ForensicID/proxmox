@@ -22,3 +22,5 @@ plugin /usr/lib/openvpn/openvpn-auth-ldap.so /etc/openvpn/auth/auth-ldap.conf
 
 nano /etc/openvpn/client/client.ovpn
 auth-user-pass
+
+systemctl restart openvpn@server
