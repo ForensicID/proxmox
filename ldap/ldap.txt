@@ -15,5 +15,8 @@ edit user.sh user nya dan jangan lupa group nya
 
 kasih permission dan jalankan
 
+akan menghasilkan user ldif nya dan tambahkan
+ldapadd -x -D cn=admin,dc=example,dc=com -W -f basedn.ldif
+
 ldapadd -x -D cn=admin,dc=example,dc=com -W -f basedn.ldif
 ldapdelete -x -D cn=admin,dc=lksjogja20,dc=lan -W  uid=mailuser10,cn=mail,ou=Mail,dc=lksjogja20,dc=lan
