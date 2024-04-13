@@ -11,7 +11,7 @@ ldapadd -x -D cn=admin,dc=example,dc=com -W -f basedn.ldif
 edit lksjogja20.lan in group.ldif
 ldapadd -x -D cn=admin,dc=example,dc=com -W -f basedn.ldif
 
-edit user.sh user nya dan jangan lupa group nya
+edit user.sh user nya dan jangan lupa group nya dan password
 
 kasih permission dan jalankan
 
