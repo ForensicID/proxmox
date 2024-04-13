@@ -1,0 +1,4 @@
+apt-get install postfix postfix-ldap
+nano /etc/postfix/main.cf
+myhostname = mail.example.com
+home_mailbox = Maildir/
