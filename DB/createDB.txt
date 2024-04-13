@@ -1,0 +1,6 @@
+sudo su postgres
+psql
+create database icinga2;
+create user icinga2 with password 'Skills39';
+grant all privileges on database icinga2 to icinga2;
+\q
