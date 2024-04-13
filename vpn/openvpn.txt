@@ -1,1 +1,92 @@
-wget https://git.io/vpn -O openvpn-install.sh
+apt install openvpn easy-rsa -y
+cp -r /usr/share/easy-rsa/ /etc/openvpn/
+cd /etc/openvpn/
+cd easy-rsa/
+cp vars.example vars
+nano vars
+    set_var EASYRSA "$PWD"
+    set_var EASYRSA_PKI             "$PWD/pki"
+    set_var EASYRSA_DN      "cn_only"
+    set_var EASYRSA_REQ_COUNTRY     "ID"
+    set_var EASYRSA_REQ_PROVINCE    "DIY"
+    set_var EASYRSA_REQ_CITY        "Yogyakarta"
+    set_var EASYRSA_REQ_ORG         "SMKN 2 Yogyakarta"
+    set_var EASYRSA_REQ_EMAIL       "sija25skaduta@gmail.com"
+    set_var EASYRSA_REQ_OU          "vpn.lksjogja1.lan"
+    set_var EASYRSA_KEY_SIZE        2048
+    set_var EASYRSA_ALGO            rsa
+    set_var EASYRSA_CA_EXPIRE       3650
+    set_var EASYRSA_CERT_EXPIRE     825
+    set_var EASYRSA_NS_SUPPORT      "no"
+    set_var EASYRSA_EXT_DIR "$EASYRSA/x509-types"
+    set_var EASYRSA_SSL_CONF        "$EASYRSA/openssl-easyrsa.cnf"
+    set_var EASYRSA_DIGEST          "sha256"
+./easyrsa init-pki
+./easyrsa build-ca
+./easyrsa gen-req vpnserver nopass
+./easyrsa sign-req server vpnserver
+openssl verify -CAfile pki/ca.crt pki/issued/vpnserver.crt
+./easyrsa gen-req vpnclient nopass
+./easyrsa sign-req client vpnclient
+openssl verify -CAfile pki/ca.crt pki/issued/vpnclient.crt
+./easyrsa gen-dh
+cp pki/ca.crt /etc/openvpn/server/
+cp pki/dh.pem /etc/openvpn/server/
+cp pki/issued/vpnserver.crt /etc/openvpn/server/
+cp pki/private/vpnserver.key /etc/openvpn/server/
+cp pki/ca.crt /etc/openvpn/client/
+cp pki/issued/vpnclient.crt /etc/openvpn/client/
+cp pki/private/vpnclient.key /etc/openvpn/client/
+cd ..
+nano server.conf
+port 1945
+proto udp
+dev tun0
+ca /etc/openvpn/server/ca.crt
+cert /etc/openvpn/server/vpnserver.crt
+key /etc/openvpn/server/vpnserver.key
+dh /etc/openvpn/server/dh.pem
+mode server
+tls-server
+server 11.11.11.0 255.255.255.0
+#ifconfig-pool 11.11.11.10 11.11.11.20
+duplicate-cn
+push "redirect-gateway autolocal"
+push "dhcp-option DNS 172.16.25.4"
+push "dhcp-option DNS 8.8.8.8"
+keepalive 10 300
+compress lz4
+persist-key
+persist-tun
+log /etc/openvpn/openvpn.log
+verb 3
+
+systemctl start openvpn@server
+ip a
+journalctl -fu openvpn@server
+systemctl status openvpn@server
+cd client/
+nano client.conf
+    client
+    dev tun0
+    proto udp
+    remote vpn-server-ip port
+    compress lz4
+    persist-key
+    persist-tun
+    verb 3
+    <ca>
+cat ca.crt >> client.conf
+nano client.conf
+    </ca>
+    <cert>
+cat vpnclient.crt >> client.conf
+nano client.conf
+    </cert>
+    <key>
+cat vpnclient.key >> client.conf
+nano client.conf
+    </key>
+
+scp -P 2004 client.ovpn gladiator1@192.168.1.2:/home/gladiator1
+openvpn --config client.ovpn
