@@ -24,3 +24,4 @@ nano /etc/openvpn/client/client.ovpn
 auth-user-pass
 
 systemctl restart openvpn@server
+journalctl -fu openvpn@server
