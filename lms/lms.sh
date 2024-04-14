@@ -118,3 +118,53 @@ else
   echo "Cant Change mode from moodledata .."
   sleep 0.5
 fi
+
+if apt install nginx -y; then
+  echo "Installing package nginx .."
+  sleep 0.5
+else
+  echo "Cant Installing package nginx .."
+  sleep 0.5
+fi
+
+if cp -R moodle.conf /etc/nginx/sites-available/; then
+  echo "Copying configuration moodle to nginx .."
+  sleep 0.5
+else
+  echo "Cant Copying configuration moodle to nginx .."
+  sleep 0.5
+fi
+
+if ln -s /etc/nginx/sites-available/moodle.conf /etc/nginx/sites-enabled/; then
+  echo "Enabling site moodle.conf .."
+  sleep 0.5
+else
+  echo "Cant Enabling site moodle.conf .."
+  sleep 0.5
+fi
+
+if mv /etc/nginx/sites-enabled/default /home/; then
+  echo "Moved to backup default conf nginx .."
+  sleep 0.5
+else
+  echo "Cant Moved to backup default conf nginx .."
+  sleep 0.5
+fi
+
+if nginx -t; then
+  echo "Checking nginx configuration .."
+  sleep 0.5
+else
+  echo "Cant Checking nginx configuration .."
+  sleep 0.5
+fi
+
+if systemctl restart nginx.service; then
+  echo "Restarting nginx service .."
+  sleep 0.5
+else
+  echo "Restarting nginx service .."
+  sleep 0.5
+fi
+
+echo INSTALLING MOODLE DONE...
