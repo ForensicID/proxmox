@@ -15,10 +15,26 @@ else
   sleep 0.5
 fi
 
+if mkdir -p /home/$username/public; then
+  echo "Create folder for samba public .."
+  sleep 0.5
+else
+  echo "Cant Create folder for samba public .."
+  sleep 0.5
+fi
+
+if chmod -R 777 /home/$username/public; then
+  echo "Change mode public folder .."
+  sleep 0.5
+else
+  echo "Cant Change mode public folder .."
+  sleep 0.5
+fi
+
 echo Change configuration from /etc/samba/smb.conf
 echo [public] >> /etc/samba/smb.conf
 echo #comment = Samba share directory >> /etc/samba/smb.conf
-echo path = /home/gladiator20/public >> /etc/samba/smb.conf
+echo path = /home/$username/public >> /etc/samba/smb.conf
 echo read only = no >> /etc/samba/smb.conf
 echo writable = yes >> /etc/samba/smb.conf
 echo browseable = yes >> /etc/samba/smb.conf
