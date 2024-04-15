@@ -28,6 +28,6 @@ if sudo /usr/pgadmin4/bin/setup-web.sh -y; then
   echo "Setup pgadmin web .."
   sleep 1
 else
-  echo "CANT Setup pgadmin web | RUN sudo /usr/pgadmin4/bin/setup-web.sh -y .."
+  echo "CANT Setup pgadmin web | RUN sudo /usr/pgadmin4/bin/setup-web.sh"
   sleep 0.5
 fi
