@@ -4,6 +4,14 @@ echo Updating packages
 apt update
 sleep 0.5
 
+if apt install nginx -y; then
+  echo "Installing package nginx .."
+  sleep 0.5
+else
+  echo "Cant Installing package nginx .."
+  sleep 0.5
+fi
+
 if apt install software-properties-common -y; then
   echo "Installing package for add repository .."
   sleep 0.5
@@ -116,14 +124,6 @@ if chmod -R 755 /var/www/html/moodledata; then
   sleep 0.5
 else
   echo "Cant Change mode from moodledata .."
-  sleep 0.5
-fi
-
-if apt install nginx -y; then
-  echo "Installing package nginx .."
-  sleep 0.5
-else
-  echo "Cant Installing package nginx .."
   sleep 0.5
 fi
 
