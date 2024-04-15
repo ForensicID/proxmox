@@ -167,4 +167,12 @@ else
   sleep 0.5
 fi
 
+if systemctl status nginx.service; then
+  echo "Statuses nginx service .."
+  sleep 0.5
+else
+  echo "Cant show status nginx service .."
+  sleep 0.5
+fi
+
 echo INSTALLING MOODLE DONE...
