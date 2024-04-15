@@ -42,6 +42,22 @@ echo guest ok = no >> /etc/samba/smb.conf
 echo #valid users = @saraz >> /etc/samba/smb.conf
 sleep 1
 
+echo Change configuration from /etc/samba/smb.conf
+echo [private] >> /etc/samba/smb.conf
+echo path = /var/www/html/moodledata>> /etc/samba/smb.conf
+echo read only = no >> /etc/samba/smb.conf
+echo writable = yes >> /etc/samba/smb.conf
+echo browseable = yes >> /etc/samba/smb.conf
+echo guest ok = yes >> /etc/samba/smb.conf
+echo create mask = 0777 >> /etc/samba/smb.conf
+echo force create mode = 0777 >> /etc/samba/smb.conf
+echo directory mask = 0777 >> /etc/samba/smb.conf
+echo force directory mode = 0777 >> /etc/samba/smb.conf
+echo valid users = @$username >> /etc/samba/smb.conf
+echo force user = www-data >> /etc/samba/smb.conf
+echo force group = www-data >> /etc/samba/smb.conf
+sleep 1
+
 echo Checking configuration from samba ..
 testparm
 sleep 1
