@@ -1,0 +1,4 @@
+run samba.sh
+
+smbpasswd -a gladiator25
+smbpasswd -e gladiator25
