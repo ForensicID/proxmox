@@ -44,7 +44,7 @@ else
   sleep 0.5
 fi
 
-echo Change configuration from /etc/postgresql/14/main/postgresql.conf
+echo Change configuration from /etc/php/8.3/fpm/php.ini
 sed -i "s/;max_input_vars = 1000/max_input_vars = 5000/g" /etc/php/8.3/fpm/php.ini
 sed -i "s/;extension=ldap/extension=ldap/g" /etc/php/8.3/fpm/php.ini
 sed -i "s/;extension=curl/extension=curl/g" /etc/php/8.3/fpm/php.ini
