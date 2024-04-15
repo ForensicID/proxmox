@@ -1,4 +1,3 @@
 apt install cifs-utils -y
-mkdir /mnt/smbmount
-mount -t cifs -o username=gladiator20 //192.168.20.2/private /mnt/smbmount
+sudo mount -t cifs -o username=gladiator25,uid=www-data,gid=www-data //172.19.25.2/private /var/www/html/moodledata
 df -h
