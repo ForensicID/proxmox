@@ -1,0 +1,10 @@
+create cert and key
+openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/private/vsftpd.key -out /etc/ssl/private/vsftpd.crt
+
+run vsftpd.sh
+
+/etc/vsftpd.conf
+rsa_cert_file=/etc/ssl/private/vsftpd.crt
+rsa_private_key_file=/etc/ssl/private/vsftpd.key
+
+restart vsftpd
