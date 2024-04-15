@@ -4,7 +4,7 @@ echo Installing/Checking packages from vsftpd
 apt install vsftpd -y
 sleep 0.5
 
-if cp openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/private/vsftpd.key -out /etc/ssl/private/vsftpd.crt; then
+if openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/private/vsftpd.key -out /etc/ssl/private/vsftpd.crt; then
   echo "Create cert and key for vsftpd .."
   sleep 0.5
 else
