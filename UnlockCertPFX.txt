@@ -1,0 +1,6 @@
+scp -P port filetransfer home@ip:/locatedfile
+
+openssl pkcs12 -in lksjogja1.lan.pfx -out lksjogja1.lan_nokey.pem -nokeys
+openssl pkcs12 -in lksjogja1.lan.pfx -out lksjogja1.lan_withkey.pem
+openssl rsa -in lksjogja1.lan_withkey.pem -out lksjogja1.lan.key
+cat lksjogja1.lan_nokey.pem lksjogja1.lan.key > lksjogja1.lan.pem
