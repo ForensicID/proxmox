@@ -1,0 +1,9 @@
+Site administration > Plugin > Manage authentication > Setting
+Host URL = ldap://ldap.lksjogja25.lan
+Version = 3
+Prevent password caching = Yes
+Distinguished name = CN=admin,DC=lksjogja25,DC=lan
+Password = Skills39
+User type = Default
+Contexts = cn=misc,ou=misc,dc=lksjogja25,dc=lan
+Search subcontexts = Yes
