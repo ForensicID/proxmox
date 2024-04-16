@@ -12,4 +12,6 @@ else
   sleep 0.5
 fi
 
+echo Installing/Checking packages from haproxy
 cat haproxy.cfg >> /etc/haproxy/haproxy.cfg
+sleep 1
