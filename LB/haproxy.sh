@@ -11,3 +11,5 @@ else
   echo "Cant backup /etc/haproxy/haproxy.cfg .."
   sleep 0.5
 fi
+
+cat haproxy.cfg >> /etc/haproxy/haproxy.cfg
