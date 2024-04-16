@@ -1,5 +1,5 @@
 create database icinga2 dan icingaweb2
-jalankan icinga.sh
+edit dan jalankan icinga.sh
 edit nano /etc/icinga2/features-available/ido-pgsql.conf
 systemctl restart icinga2
 icinga2 api setup
