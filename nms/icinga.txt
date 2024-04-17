@@ -1,5 +1,5 @@
 create database icinga2 dan icingaweb2
-edit dan jalankan icinga.sh
+edit dan jalankan icinga.sh | jangan lupa edit
 psql -h 172.17.25.2 -U icinga2 -d icinga2 < /usr/share/icinga2-ido-pgsql/schema/pgsql.sql
 edit nano /etc/icinga2/features-available/ido-pgsql.conf
 /**
