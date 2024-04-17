@@ -1,3 +1,9 @@
+a2enmod ssl
+
+/etc/apache2/apache2.conf
+ServerName data.lksjogja25.lan | add baris terakhir
+
+nano /etc/apache2/sites-enabled/000-default.conf
 <VirtualHost *:80>
         ServerName data.lksjogja25.lan
         Redirect "/" "https://data.lksjogja25.lan/pgadmin4"
