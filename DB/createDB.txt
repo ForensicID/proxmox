@@ -4,3 +4,7 @@ create database icinga2;
 create user icinga2 with password 'Skills39';
 grant all privileges on database icinga2 to icinga2;
 \q
+
+#delete
+SELECT * FROM pg_stat_activity WHERE datname='icinga2';
+DROP DATABASE icinga2 WITH (FORCE);
