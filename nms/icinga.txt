@@ -33,5 +33,5 @@ jalankan icinga1.sh
 akses web
 icingacli setup token show
 
-ido database error edit
-nano /etc/icinga2/features-available/ido-pgsql.conf
+ido database error edit dan samakan dengan /etc/icinga2/features-available/ido-pgsql.conf
+nano /etc/icinga2/features-enabled/ido-pgsql.conf
