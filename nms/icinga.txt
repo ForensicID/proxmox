@@ -2,6 +2,21 @@ create database icinga2 dan icingaweb2
 edit dan jalankan icinga.sh
 psql -h 172.17.25.2 -U icinga2 -d icinga2 < /usr/share/icinga2-ido-pgsql/schema/pgsql.sql
 edit nano /etc/icinga2/features-available/ido-pgsql.conf
+/**
+ * The db_ido_pgsql library implements IDO functionality
+ * for PostgreSQL.
+ */
+
+library "db_ido_pgsql"
+
+object IdoPgsqlConnection "ido-pgsql" {
+  user = "icinga2",
+  password = "Skills39",
+  host = "172.17.25.2",
+  port = "5432",
+  database = "icinga2"
+}
+
 systemctl restart icinga2
 icinga2 api setup
 
@@ -17,3 +32,6 @@ object ApiUser "icingaweb2" {
 jalankan icinga1.sh
 akses web
 icingacli setup token show
+
+ido database error edit
+nano /etc/icinga2/features-available/ido-pgsql.conf
