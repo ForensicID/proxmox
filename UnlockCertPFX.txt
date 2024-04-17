@@ -4,3 +4,8 @@ openssl pkcs12 -in lksjogja1.lan.pfx -out lksjogja1.lan_nokey.pem -nokeys
 openssl pkcs12 -in lksjogja1.lan.pfx -out lksjogja1.lan_withkey.pem
 openssl rsa -in lksjogja1.lan_withkey.pem -out lksjogja1.lan.key
 cat lksjogja1.lan_nokey.pem lksjogja1.lan.key > lksjogja1.lan.pem
+
+#CRT AND KEY 
+openssl pkcs12 -in monitor.lksjogja25.lan.pfx -nocerts -out monitor.lksjogja25.lan.key
+openssl pkcs12 -in monitor.lksjogja25.lan.pfx -clcerts -nokeys -out monitor.lksjogja25.lan.crt
+openssl rsa -in monitor.lksjogja25.lan.key -out monitor.lksjogja25.lan.key
