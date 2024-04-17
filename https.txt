@@ -13,3 +13,5 @@ nano /etc/apache2/sites-enabled/000-default.conf
         SSLCertificateFile /home/gladiator25/certs/monitor.lksjogja25.lan.crt
         SSLCertificateKeyFile /home/gladiator25/certs/monitor.lksjogja25.lan.key
 </VirtualHost>
+
+restart
