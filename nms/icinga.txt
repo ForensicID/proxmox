@@ -16,3 +16,4 @@ object ApiUser "icingaweb2" {
 
 jalankan icinga1.sh
 akses web
+icingacli setup token show
