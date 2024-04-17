@@ -1,0 +1,4 @@
+dn: cn=misc,ou=Misc,dc=lksjogja25,dc=lan
+changetype: modify
+replace: loginShell
+loginShell: /usr/sbin/nologin
