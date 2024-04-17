@@ -1,0 +1,10 @@
+/etc/icinga2/conf.d/hosts.conf
+
+object Host "LNX-SRV-LB-25" {
+  address = "172.16.25.4"
+  check_command = "hostalive"
+}
+object Service "http" {
+  host_name = "LNX-SRV-LB-25"
+  check_command = "http"
+}
