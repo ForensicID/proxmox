@@ -1,0 +1,9 @@
+<VirtualHost *:80>
+        ServerName data.lksjogja25.lan
+        Redirect "/" "https://data.lksjogja25.lan/pgadmin4"
+</VirtualHost>
+<VirtualHost *:443>
+        SSLEngine on
+        SSLCertificateFile /home/gladiator25/certs/monitor.lksjogja25.lan.crt
+        SSLCertificateKeyFile /home/gladiator25/certs/monitor.lksjogja25.lan.key
+</VirtualHost>
