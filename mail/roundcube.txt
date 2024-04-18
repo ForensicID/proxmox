@@ -12,6 +12,8 @@ apt update
 apt install php-net-ldap2 php-net-ldap3 php-imagick php8.1-common php8.1-pgsql php8.1-gd php8.1-imap php8.1-curl php8.1-zip php8.1-xml php8.1-mbstring php8.1-bz2 php8.1-intl php8.1-gmp php8.1-redis -y
 
 create database
+apt install postgresql-client-common postgresql-client-14 -y
+psql -h 127.0.0.1 -d roundcubemail -U roundcube -W -f /var/www/roundcube/SQL/postgres.initial.sql
 
 CREATE DATABASE roundcubemail;
 CREATE USER 'roundcube'@'localhost' IDENTIFIED BY 'Skills39';
