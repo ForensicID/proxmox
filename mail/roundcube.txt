@@ -15,10 +15,46 @@ create database
 apt install postgresql-client-common postgresql-client-14 -y
 psql -h 127.0.0.1 -d roundcubemail -U roundcube -W -f /var/www/roundcube/SQL/postgres.initial.sql
 
-CREATE DATABASE roundcubemail;
-CREATE USER 'roundcube'@'localhost' IDENTIFIED BY 'Skills39';
-GRANT ALL PRIVILEGES ON roundcubemail . * TO 'roundcube'@'localhost';
-FLUSH PRIVILEGES;
+cp /var/www/roundcube/config/config.inc.php.sample /var/www/roundcube/config/config.inc.php
+nano /var/www/roundcube/config/config.inc.php
+$config['db_dsnw'] = 'pgsql://roundcube:Skills39@172.18.25.1/roundcube';
 
-mysql roundcubemail < /var/www/roundcubemail-1.6.6/SQL/mysql.initial.sql
+nano /etc/nginx/sites-available/roundcube.conf
+server {
+  listen 80;
+  listen [::]:80;
+  server_name mail.lksjogja25.lan;
+  root /var/www/roundcube/;
+  index index.php index.html index.htm;
 
+  error_log /var/log/nginx/roundcube.error;
+  access_log /var/log/nginx/roundcube.access;
+
+  location / {
+    try_files $uri $uri/ /index.php;
+  }
+
+  location ~ \.php$ {
+   try_files $uri =404;
+    fastcgi_pass unix:/run/php/php8.1-fpm.sock;
+    fastcgi_index index.php;
+    fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+    include fastcgi_params;
+  }
+
+  location ~ /.well-known/acme-challenge {
+    allow all;
+  }
+ location ~ ^/(README|INSTALL|LICENSE|CHANGELOG|UPGRADING)$ {
+    deny all;
+  }
+  location ~ ^/(bin|SQL)/ {
+    deny all;
+  }
+ # A long browser cache lifetime can speed up repeat visits to your page
+  location ~* \.(jpg|jpeg|gif|png|webp|svg|woff|woff2|ttf|css|js|ico|xml)$ {
+       access_log        off;
+       log_not_found     off;
+       expires           360d;
+  }
+}
