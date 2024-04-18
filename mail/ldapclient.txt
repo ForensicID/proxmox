@@ -20,3 +20,4 @@ gshadow:        files ldap
 
 systemctl restart nscd
 systemctl status nscd
+ldapsearch -x -H "ldap://ldap.lksjogja25.lan" -P 3 -LLL -b "dc=lksjogja25,dc=lan"
