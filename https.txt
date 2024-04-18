@@ -16,3 +16,25 @@ nano /etc/apache2/sites-enabled/000-default.conf
 </VirtualHost>
 
 restart
+
+#nginx
+server {
+  listen 443 ssl;
+
+  server_name mail.lksjogja25.lan;
+  ssl_certificate     /home/gladiator25/certs/mail.lksjogja25.lan.crt;
+  ssl_certificate_key /home/gladiator25/certs/mail.lksjogja25.lan.key;
+
+  #ssl_verify_client       on;
+  #ssl_trusted_certificate /etc/ssl/cachain.pem;
+  #ssl_ocsp                on; # Enable OCSP validation
+
+  location / {
+        proxy_pass http://mail.lksjogja25.lan:81;
+        proxy_set_header Host $host;
+        proxy_set_header X-Forwarded-Proto https;
+        proxy_read_timeout 60;
+        proxy_connect_timeout 60;
+        proxy_set_header X-Real-IP $remote_addr;
+    }
+}
