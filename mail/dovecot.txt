@@ -8,6 +8,7 @@ disable_plaintext_auth = no
 
 nano 10-mail.conf
 mail_location = maildir:~/Maildir
+#mail_location = mbox:~/mail:INBOX=/var/mail/%u
 
 10-master.conf
   unix_listener /var/spool/postfix/private/auth {
