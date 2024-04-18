@@ -1,4 +1,9 @@
 apt-get install postfix postfix-ldap
 nano /etc/postfix/main.cf
+
+smtpd_sasl_type = dovecot
+smtpd_sasl_path = private/auth
+smtpd_sasl_auth_enable = yes
+
 myhostname = mail.example.com
 home_mailbox = Maildir/
