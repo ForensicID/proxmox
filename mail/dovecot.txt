@@ -17,3 +17,5 @@ mail_location = maildir:~/Maildir
     user = postfix
     group = postfix
   }
+
+maildirmake.dovecot /etc/skel/Maildir
