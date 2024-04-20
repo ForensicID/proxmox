@@ -15,7 +15,7 @@ session optional        pam_mkhomedir.so skel=/etc/skel umask=077
 nano /etc/nsswitch.conf
 passwd:         compat systemd ldap
 group:          compat systems ldap
-shadow:         compat
+shadow:         compat ldap
 gshadow:        files ldap
 
 systemctl restart nscd
