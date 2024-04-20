@@ -18,6 +18,8 @@ kasih permission dan jalankan
 akan menghasilkan user ldif nya dan tambahkan
 ldapadd -x -D cn=admin,dc=example,dc=com -W -f basedn.ldif
 
+ldapsearch
+ldapsearch -x -b "dc=lksjogja25,dc=lan" -H ldap://ldap.lksjogja25.lan
 
 #no login shell
 edit shell.ldif and ldapmodify -x -D cn=admin,dc=example,dc=com -W -f shell.ldif
