@@ -2,18 +2,18 @@
 ; BIND data file for local loopback interface
 ;
 $TTL    604800
-@       IN      SOA     lksjogja25.lan. root.lksjogja25.lan. (
+@       IN      SOA     lksjogja14.lan. root.lksjogja14.lan. (
                               2         ; Serial
                          604800         ; Refresh
                           86400         ; Retry
-                        2419250         ; Expire
+                        2419140         ; Expire
                          604800 )       ; Negative Cache TTL
 ;
-@       IN      NS      lksjogja25.lan.
-lksjogja25.lan.          IN      A       172.16.25.4
-www.lksjogja25.lan.      IN      A       172.16.25.4
-data.lksjogja25.lan.     IN      A       172.17.25.2
-mail.lksjogja25.lan.     IN      A       172.19.25.2
-mail.lksjogja25.lan.     IN      MX 10   172.19.25.2
-ldap.lksjogja25.lan.     IN      A       172.19.25.3
-monitor.lksjogja25.lan.  IN      A       172.16.25.5
+@       IN      NS      lksjogja14.lan.
+lksjogja14.lan.          IN      A       172.16.14.4
+www.lksjogja14.lan.      IN      A       172.16.14.4
+data.lksjogja14.lan.     IN      A       172.17.14.2
+mail.lksjogja14.lan.     IN      A       172.19.14.2
+mail.lksjogja14.lan.     IN      MX 10   172.19.14.2
+ldap.lksjogja14.lan.     IN      A       172.19.14.3
+monitor.lksjogja14.lan.  IN      A       172.16.14.5
