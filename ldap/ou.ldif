@@ -1,11 +1,11 @@
-dn: ou=VPN,dc=lksjogja20,dc=lan
+dn: ou=VPN,dc=lksjogja14,dc=lan
 objectClass: organizationalUnit
 ou: VPN
 
-dn: ou=Mail,dc=lksjogja20,dc=lan
+dn: ou=Mail,dc=lksjogja14,dc=lan
 objectClass: organizationalUnit
 ou: Mail
 
-dn: ou=Misc,dc=lksjogja20,dc=lan
+dn: ou=Misc,dc=lksjogja14,dc=lan
 objectClass: organizationalUnit
 ou: Misc
