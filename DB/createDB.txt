@@ -6,7 +6,7 @@ grant all privileges on database icinga2 to icinga2;
 \q
 
 #inisiasi database
-psql -h 127.0.0.1 -d roundcubemail -U roundcube -W -f /var/www/roundcube/SQL/postgres.initial.sql
+psql -h 172.16.14.2 -d roundcubemail -U roundcube -W -f /var/www/roundcube/SQL/postgres.initial.sql
 
 #delete
 SELECT * FROM pg_stat_activity WHERE datname='icinga2';
