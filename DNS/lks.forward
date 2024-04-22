@@ -10,10 +10,10 @@ $TTL    604800
                          604800 )       ; Negative Cache TTL
 ;
 @       IN      NS      lksjogja14.lan.
-lksjogja14.lan.          IN      A       172.16.14.4
-www.lksjogja14.lan.      IN      A       172.16.14.4
-data.lksjogja14.lan.     IN      A       172.17.14.2
-mail.lksjogja14.lan.     IN      A       172.19.14.2
-mail.lksjogja14.lan.     IN      MX 10   172.19.14.2
-ldap.lksjogja14.lan.     IN      A       172.19.14.3
-monitor.lksjogja14.lan.  IN      A       172.16.14.5
+lksjogja14.lan.          IN      A       172.15.14.4
+www.lksjogja14.lan.      IN      A       172.15.14.4
+data.lksjogja14.lan.     IN      A       172.16.14.2
+mail.lksjogja14.lan.     IN      A       172.16.14.6
+mail.lksjogja14.lan.     IN      MX 10   172.16.14.6
+ldap.lksjogja14.lan.     IN      A       172.16.14.7
+monitor.lksjogja14.lan.  IN      A       172.15.14.5
