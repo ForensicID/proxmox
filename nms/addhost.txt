@@ -4,7 +4,15 @@ object Host "LNX-SRV-LB-25" {
   address = "172.16.25.4"
   check_command = "hostalive"
 }
+object Service "ping4" {
+  host_name = "LNX-SRV-LB-25"
+  check_command = "ping4"
+}
 object Service "http" {
   host_name = "LNX-SRV-LB-25"
   check_command = "http"
+}
+object Host "localhost" {
+  check_command = "ssh"
+  vars.ssh_port = 2222
 }
