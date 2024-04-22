@@ -1,11 +1,11 @@
 apt install slapd ldap-utils -y
 edit file ldap.conf
 BASE    dc=lksjogja25,dc=lan
-URI     ldap://ldap.lkgjogja25.lan ldap://ldap.lksjogja25.lan:666
+URI     ldap://ldap.lksjogja14.lan ldap://ldap.lksjogja14.lan:666
 dpkg-reconfigure slapd
 systemctl restart slapd
 
-edit lksjogja20.lan in ou.ldif and ou name
+edit lksjogja14.lan in ou.ldif and ou name
 ldapadd -x -D cn=admin,dc=example,dc=com -W -f basedn.ldif
 
 edit lksjogja20.lan in group.ldif
@@ -19,10 +19,10 @@ akan menghasilkan user ldif nya dan tambahkan
 ldapadd -x -D cn=admin,dc=example,dc=com -W -f basedn.ldif
 
 ldapsearch
-ldapsearch -x -b "dc=lksjogja25,dc=lan" -H ldap://ldap.lksjogja25.lan
+ldapsearch -x -b "dc=lksjogja25,dc=lan" -H ldap://ldap.lksjogja14.lan
 
 #no login shell
 edit shell.ldif and ldapmodify -x -D cn=admin,dc=example,dc=com -W -f shell.ldif
 
 ldapadd -x -D cn=admin,dc=example,dc=com -W -f basedn.ldif
-ldapdelete -x -D cn=admin,dc=lksjogja20,dc=lan -W  uid=mailuser10,cn=mail,ou=Mail,dc=lksjogja20,dc=lan
+ldapdelete -x -D cn=admin,dc=lksjogja14,dc=lan -W  uid=mailuser10,cn=mail,ou=Mail,dc=lksjogja14,dc=lan
