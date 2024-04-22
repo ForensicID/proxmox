@@ -6,7 +6,7 @@
 // organization
 //include "/etc/bind/zones.rfc1918";
 
-zone "lksjogja25.lan" {
+zone "lksjogja14.lan" {
         type master;
         file "/etc/bind/lks.forward";
 };
