@@ -4,3 +4,22 @@ go to /etc/pve/nodes/pve1/qemu-server
 backup file vm
 cluster again
 go back file vm
+
+root@pve:~# systemctl stop pve-cluster corosync
+root@pve:~# pmxcfs -l
+[main] notice: forcing local mode (although corosync.conf exists)
+root@pve:~# tar -zcvf etc_corosync.tar.gz /etc/corosync/*
+tar: Removing leading `/' from member names
+/etc/corosync/authkey
+tar: Removing leading `/' from hard link targets
+/etc/corosync/corosync.conf
+root@pve:~# rm /etc/corosync/*
+root@pve:~# tar -zcvf corosync_conf.tar.gz /etc/pve/corosync.conf
+tar: Removing leading `/' from member names
+/etc/pve/corosync.conf
+root@pve:~# rm /etc/pve/corosync.conf
+root@pve:~# killall pmxcfs
+root@pve:~# systemctl start pve-cluster
+root@pve:~# pvecm status
+Error: Corosync config '/etc/pve/corosync.conf' does not exist - is this node part of a cluster?
+root@pve:~#
